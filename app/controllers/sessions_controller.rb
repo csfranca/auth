@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
     # 2. if the user exists -> check if they know their password
     if @user != nil
-      if @user["password"] == params["password"]
+      if BCrypt::Password.new(@user["password"]) == params["password"]
 
     # 3. if they know their password -> login is successful
     flash["notice"] = "Welcome"
