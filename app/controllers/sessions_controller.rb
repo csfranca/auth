@@ -10,13 +10,13 @@ class SessionsController < ApplicationController
 
     # 2. if the user exists -> check if they know their password
     if @user != nil
-
-    # 3. if they know their password -> login is successful
       if @user["password"] == params["password"]
 
-    # 4. if the email does not exist or they do not know their password -> login fails
+    # 3. if they know their password -> login is successful
     flash["notice"] = "Welcome"
     redirect_to "/companies"  
+
+    # 4. if the email does not exist or they do not know their password -> login fails
   else 
     flash["notice"] = "Nope."
     redirect_to "/sessions/new"
